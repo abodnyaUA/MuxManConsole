@@ -42,15 +42,10 @@ int main(int argc, char *argv[])
         qDebug() << "Missed Untitled.ac3 file";
         exit(0);
     }
-    else
-    {
-        // Ukrainian file //
-        QFileInfo info(sourceFolder + SLASH + audio.last());
-        audio_sizes.append(info.size());
-        qDebug() << "audio: " << audio.last() << "; size = " << audio_sizes[0] << "\n";
-    }
+    audio.removeLast();
+    audio.insert(0,"Untitled.ac3");
 
-    for (int i=0;i<audio.count()-1;i++)
+    for (int i=0;i<audio.count();i++)
     {
         // Rest files //
         QFileInfo info(sourceFolder + SLASH + audio.at(i));
